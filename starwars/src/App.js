@@ -10,7 +10,8 @@ const App = () => {
 
   const Wrapper = styled.section`
   padding: 2em;
-  background: beige;
+  background: black;
+  width: 100%;
 `;
 
   const Container = styled.div`
@@ -31,7 +32,18 @@ const App = () => {
     background-color: beige;
     `; 
 
-  // const Header
+  const Header = styled.h1`
+    color: grey;
+  `
+
+  const Footer = styled.h4`
+    color: grey;
+    background-color: black;
+    padding: 2em;
+    width: 100%;
+    margin: 0 auto;
+  `
+
   
 
   useEffect(() => {
@@ -51,7 +63,7 @@ const App = () => {
 
     return (
       <div className="App">
-        <Wrapper><h1>StarWars Characters</h1></Wrapper>
+        <Wrapper><Header>StarWars Characters</Header></Wrapper>
 
         <Container>
 
@@ -73,6 +85,7 @@ const App = () => {
             })}
 
         </Container>
+        <Footer><h4>{'Page Created by: Eduardo Jimenez'}</h4></Footer>
 
         </div>
     )
