@@ -5,23 +5,14 @@ import CharacterCard from './CharacterCard';
 
 const App = () => {
   const [people, setPeople] = useState([])
-  const [names, setNames] = useState([]);
+  
 
   useEffect(() => {
     async function fetch(){
         try{
-            const people = await Axios.get('https://swapi.co/api/people/')
-            
-            const name = people.Data;
-            setPeople(name);
-            console.log(people.data);
-            const data = people.data;
-            const names = []
-            const map = data.map((name) => (
-              names.push(name.results)
-            ))
-            
-            setNames(names)
+            const character = await Axios.get('https://swapi.co/api/people/')
+            setPeople(character.data.results);
+            console.log(people);
         }
         catch(err){
             console.log(err)
@@ -33,28 +24,13 @@ const App = () => {
 
     return (
       <div className="App">
-        <div className="header-styles">
-          <h1 className="Header">React Wars</h1>
+        {people.map(person => {
+          return(
+            <CharacterCard name={person.name} year={person.birth_year} height={person.height} films={person.films} mass={person.mass} />
+          )
+        })}
         </div>
-        {/* <CharacterCard name={people} /> */}
-        <Card />
-        </div>
-      )
-
-
-  function Card() {
-    return(
-      // <div className="Card">{people.data.results.map((names) => (
-        
-      //   <h1 className="header-style">{names.Data}</h1>
-      // ))}
-      // {console.log(people.data)}
-          
-      // </div>
-<div></div>
-      )
-      
-  }
+    )
   
   
   }
